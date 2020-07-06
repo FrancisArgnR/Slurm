@@ -57,4 +57,35 @@
 
 	srun -N1 -p "ulises" -x "node103" -e Slurm.error -o Slurm.out Rscript rprueba.R
 	
-### 
+### Launch a job from a script
+
+#### Simple example
+
+	prueba.sh:
+
+		#!/bin/bash			# Specification of where it will run (if there are problems it may be another interpreter)	
+		Rscript PruebaSlurm.R		# Code with the sentence: R.Version()$version.string
+		
+	sbatch prueba.sh
+
+#### Complex example
+
+	myscript.sh:
+	
+		#!/bin/bash			# Specification of where it is to be executed (may generate problems if the interpreter is another one)
+		#
+		#SBATCH --job-name=test		# Name of the job
+		#SBATCH --output=res.txt	# File to save the output
+		#SBATCH --error=error.txt	# File in which error messages are stored
+		#SBATCH --partition=ulises	# Partition on which to launch the job (if omitted, the default partition is used)
+		#
+		#SBATCH --nodes=1		# No. of nodes in which it is launched (if not specified, it is determined by slurm)
+		#SBATCH --nodelist=node103	# Names of specific nodes to host the job (if not specified, determined by slurm)
+		#SBATCH --ntasks=10		# Number of tasks in total (to be distributed equally among the nodes)
+		#SBATCH --ntasks-per-node=	# Number of tasks per node
+		#SBATCH --cpus-per-task=4  	# CPUs to use per task (interesting if working in multithread (default one CPU per task))
+
+		srun Rscript rprueba.R
+
+	sbatch myscript.sh
+
