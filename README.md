@@ -1,5 +1,13 @@
 # Slurm
 
+## Table of Contents
+====================
+
+* [Basic commands](#basic-commands)
+* [Examples of use of Slurm](#examples-of-use-of-slurm)
+
+====================
+
 ## Basic commands
 
 ### Slurm node status (down -> down, idle -> ok, mix -> in use)
@@ -31,7 +39,7 @@
 
 
 
-## Basic use of Slurm
+## Examples of use of Slurm
 
 ### Launches in 3 nodes of the default partition the command (replicates the command)(in the foreground)
 
