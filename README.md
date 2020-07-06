@@ -7,7 +7,7 @@
 	sinfo 
 	sinfo -N -l
 
-### Current jobs ins Slurm
+### Current jobs in Slurm
 
 	squeue
 
